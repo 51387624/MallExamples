@@ -16,8 +16,6 @@ namespace Mall.Core.Events
             this.eventHandlerExecutionContext = eventHandlerExecutionContext;
         }
 
-        internal protected void b() { }
-        private protected void a() { }
 
         public abstract Task PublishAsync<TEvent>(TEvent @event, CancellationToken cancellationToken = default) 
             where TEvent : IEvent;

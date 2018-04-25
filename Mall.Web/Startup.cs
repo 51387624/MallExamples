@@ -33,7 +33,7 @@ namespace Mall.Web
         {
             services.AddMvc();
             services.AddTransient<IEventStore>(serviceProvider =>
-               new DapperEventStore(Configuration["mssql:connectionString"],
+               new Infrastructure.EventStore.DapperEventStore(Configuration["mssql:connectionString"],
                    serviceProvider.GetRequiredService<ILogger<DapperEventStore>>()));
 
             var eventHandlerExecutionContext = new EventHandlerExecutionContext(services, sc => sc.BuildServiceProvider());

@@ -1,8 +1,8 @@
-﻿using Mall.Core.Events;
+﻿using Dapper;
+using Mall.Core.Events;
 using Microsoft.Extensions.Logging;
-using System;
-using System.Collections.Generic;
-using System.Text;
+using Newtonsoft.Json;
+using System.Data.SqlClient;
 using System.Threading.Tasks;
 
 namespace Mall.Infrastructure.EventStore
@@ -19,16 +19,16 @@ namespace Mall.Infrastructure.EventStore
        
         public async Task SaveEventAsync<TEvent>(TEvent @event) where TEvent : IEvent
         {
-            //const string sql = @"INSERT INTO [dbo].[Events] ([EventId], [EventPayload], [EventTimestamp]) VALUES (@eventId, @eventPayload, @eventTimestamp)";
-            //using (var connection = new SqlConnection(this.connectionString))
-            //{
-            //    await connection.ExecuteAsync(sql, new
-            //    {
-            //        eventId = @event.Id,
-            //        eventPayload = JsonConvert.SerializeObject(@event),
-            //        eventTimestamp = @event.Timestamp
-            //    });
-            //}
+            const string sql = @"INSERT INTO [dbo].[Events] ([EventId], [EventTimestamp], [EventPayload]) VALUES (@eventId, @eventPayload, @eventTimestamp)";
+            using (var connection = new SqlConnection(this.connectionString))
+            {
+                await connection.ExecuteAsync(sql, new
+                {
+                    eventId = @event.Id,
+                    eventPayload = JsonConvert.SerializeObject(@event),
+                    eventTimestamp = @event.Timestamp
+                });
+            }
         }
 
         public void Dispose()
