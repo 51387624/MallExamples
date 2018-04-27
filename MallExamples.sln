@@ -3,13 +3,25 @@ Microsoft Visual Studio Solution File, Format Version 12.00
 # Visual Studio 15
 VisualStudioVersion = 15.0.27428.2011
 MinimumVisualStudioVersion = 10.0.40219.1
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Mall.Core", "Mall.Core\Mall.Core.csproj", "{A5391BFA-AD60-4A82-B551-38925C313404}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Mall.Core", "Mall.Core\Mall.Core.csproj", "{A5391BFA-AD60-4A82-B551-38925C313404}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Mall.Web", "Mall.Web\Mall.Web.csproj", "{D04AB27B-D750-4BD3-AACE-F9CABD663B27}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Mall.Web", "Mall.Web\Mall.Web.csproj", "{D04AB27B-D750-4BD3-AACE-F9CABD663B27}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Mall.Infrastructure", "Mall.Infrastructure\Mall.Infrastructure.csproj", "{66D987D2-5EF8-4AFA-A92B-42EE4D6B8BB2}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Mall.Infrastructure", "Mall.Infrastructure\Mall.Infrastructure.csproj", "{66D987D2-5EF8-4AFA-A92B-42EE4D6B8BB2}"
 EndProject
-Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "4.Infrastructure", "4.Infrastructure", "{064691BC-FBBF-4663-9D9E-DF085544ACBD}"
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "0.Infrastructure", "0.Infrastructure", "{064691BC-FBBF-4663-9D9E-DF085544ACBD}"
+EndProject
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Mall.Domain.Order", "Mall.Domain.Order\Mall.Domain.Order.csproj", "{0E25E724-E0AB-4F13-B14A-671139178E95}"
+EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "1.Domain", "1.Domain", "{828F1F08-A370-4943-A5A2-EC2BC203036F}"
+EndProject
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Mall.Domain.Product", "Mall.Domain.Product\Mall.Domain.Product.csproj", "{F2D42E98-AF50-4D22-915C-8BC3633D91B5}"
+EndProject
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Mall.Domain.Member", "Mall.Domain.Member\Mall.Domain.Member.csproj", "{D58CB134-95A2-4117-B459-99B4A62FA75F}"
+EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "3.UI", "3.UI", "{A5FE0F0A-F0E1-42EB-828C-D7178283019C}"
+EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "2.Application", "2.Application", "{D228B14F-B8D9-44D5-8359-0522676CDC99}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -29,12 +41,29 @@ Global
 		{66D987D2-5EF8-4AFA-A92B-42EE4D6B8BB2}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{66D987D2-5EF8-4AFA-A92B-42EE4D6B8BB2}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{66D987D2-5EF8-4AFA-A92B-42EE4D6B8BB2}.Release|Any CPU.Build.0 = Release|Any CPU
+		{0E25E724-E0AB-4F13-B14A-671139178E95}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{0E25E724-E0AB-4F13-B14A-671139178E95}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{0E25E724-E0AB-4F13-B14A-671139178E95}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{0E25E724-E0AB-4F13-B14A-671139178E95}.Release|Any CPU.Build.0 = Release|Any CPU
+		{F2D42E98-AF50-4D22-915C-8BC3633D91B5}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{F2D42E98-AF50-4D22-915C-8BC3633D91B5}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{F2D42E98-AF50-4D22-915C-8BC3633D91B5}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{F2D42E98-AF50-4D22-915C-8BC3633D91B5}.Release|Any CPU.Build.0 = Release|Any CPU
+		{D58CB134-95A2-4117-B459-99B4A62FA75F}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{D58CB134-95A2-4117-B459-99B4A62FA75F}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{D58CB134-95A2-4117-B459-99B4A62FA75F}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{D58CB134-95A2-4117-B459-99B4A62FA75F}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
 	EndGlobalSection
 	GlobalSection(NestedProjects) = preSolution
+		{A5391BFA-AD60-4A82-B551-38925C313404} = {064691BC-FBBF-4663-9D9E-DF085544ACBD}
+		{D04AB27B-D750-4BD3-AACE-F9CABD663B27} = {A5FE0F0A-F0E1-42EB-828C-D7178283019C}
 		{66D987D2-5EF8-4AFA-A92B-42EE4D6B8BB2} = {064691BC-FBBF-4663-9D9E-DF085544ACBD}
+		{0E25E724-E0AB-4F13-B14A-671139178E95} = {828F1F08-A370-4943-A5A2-EC2BC203036F}
+		{F2D42E98-AF50-4D22-915C-8BC3633D91B5} = {828F1F08-A370-4943-A5A2-EC2BC203036F}
+		{D58CB134-95A2-4117-B459-99B4A62FA75F} = {828F1F08-A370-4943-A5A2-EC2BC203036F}
 	EndGlobalSection
 	GlobalSection(ExtensibilityGlobals) = postSolution
 		SolutionGuid = {56A9E519-96D0-4501-BFA5-124D2CE75D4B}

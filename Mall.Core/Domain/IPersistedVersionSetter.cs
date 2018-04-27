@@ -4,12 +4,11 @@ using System.Text;
 
 namespace Mall.Core
 {
+    /// <summary>
+    /// 版本设置器
+    /// </summary>
     public interface IPersistedVersionSetter
     {
-        #region Public Properties
-
         long PersistedVersion { set; }
-
-        #endregion Public Properties
     }
 }

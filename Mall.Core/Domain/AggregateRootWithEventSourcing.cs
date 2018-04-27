@@ -1,11 +1,13 @@
-﻿using Mall.Core.Events.Domain;
+﻿
+using Mall.Core.Domain;
+using Mall.Core.Domain.Events;
 using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Reflection;
 using System.Threading;
 
-namespace Mall.Core
+namespace Mall.Core.Domain
 {
     public abstract class AggregateRootWithEventSourcing : IAggregateRootWithEventSourcing
     {
@@ -155,6 +157,7 @@ namespace Mall.Core
         {
             this.id = @event.NewId;
         }
+
         protected void Raise<TDomainEvent>(TDomainEvent domainEvent)
             where TDomainEvent : IDomainEvent
         {
@@ -162,14 +165,11 @@ namespace Mall.Core
             {
                 // 首先处理事件数据。
                 this.HandleEvent(domainEvent);
-
-                // 然后设置事件的元数据，包括当前事件所对应的聚合根类型以及
                 // 聚合的ID值。
+                // 然后设置事件的元数据，包括当前事件所对应的聚合根类型以及
                 domainEvent.AggregateRootId = this.id;
                 domainEvent.AggregateRootType = this.GetType().AssemblyQualifiedName;
-
                 domainEvent.Sequence = this.Version + 1;
-
                 // 最后将事件缓存在“未提交事件”列表中。
                 this.uncommittedEvents.Enqueue(domainEvent);
             }
