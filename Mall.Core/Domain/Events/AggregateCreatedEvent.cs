@@ -9,11 +9,11 @@ namespace Mall.Core.Domain.Events
     /// </summary>
     public sealed class AggregateCreatedEvent : DomainEvent
     {
-        public AggregateCreatedEvent(Guid newId)
+        public AggregateCreatedEvent(object newId)
         {
             this.NewId = newId;
         }
 
-        public Guid NewId { get; set; }
+        public object NewId { get; set; }
     }
 }

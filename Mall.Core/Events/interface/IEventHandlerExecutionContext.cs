@@ -6,6 +6,9 @@ using System.Threading.Tasks;
 
 namespace Mall.Core.Events
 {
+    /// <summary>
+    /// 事件执行上下文
+    /// </summary>
     public interface IEventHandlerExecutionContext
     {
         void RegisterHandler<TEvent, THandler>()

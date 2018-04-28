@@ -7,8 +7,9 @@ namespace Mall.Core
     /// <summary>
     /// 实体
     /// </summary>
-    public interface IEntity
+    public interface IEntity<TKey>
+         where TKey : IEquatable<TKey>
     {
-        Guid Id { get; }
+        TKey Id { get; }
     }
 }

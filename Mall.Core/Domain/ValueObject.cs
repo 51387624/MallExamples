@@ -5,11 +5,9 @@ using System.Text;
 namespace Mall.Core.Domain
 {
     /// <summary>
-    /// 聚合根
+    /// 值对象
     /// </summary>
-    public interface IAggregateRoot<TKey> : IEntity<TKey>
-         where TKey : IEquatable<TKey>
+    public class ValueObject
     {
-
     }
 }

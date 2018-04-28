@@ -29,7 +29,7 @@ namespace Mall.Core.Domain.Events
         /// <summary>
         /// 聚合根ID
         /// </summary>
-        public Guid AggregateRootId { get; set; }
+        public object AggregateRootId { get; set; }
         /// <summary>
         /// 聚合根类型
         /// </summary>

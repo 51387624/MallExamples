@@ -12,4 +12,8 @@
     <LangVersion>latest</LangVersion>
   </PropertyGroup>
 
+  <ItemGroup>
+    <Folder Include="Domain\Command\" />
+  </ItemGroup>
+
 </Project>

@@ -5,6 +5,9 @@ using System.Threading.Tasks;
 
 namespace Mall.Core.Events
 {
+    /// <summary>
+    /// 事件仓储
+    /// </summary>
     public interface IEventStore : IDisposable
     {
         Task SaveEventAsync<TEvent>(TEvent @event)

@@ -9,26 +9,23 @@ using System.Threading;
 
 namespace Mall.Core.Domain
 {
-    public abstract class AggregateRootWithEventSourcing : IAggregateRootWithEventSourcing
+    public abstract class AggregateRootWithEventSourcing<TKey> : IAggregateRootWithEventSourcing<TKey>, IPersistedVersionSetter, IPurgable
+         where TKey : IEquatable<TKey>
     {
-        #region Private Fields
+        #region 私有属性
 
         private readonly Lazy<Dictionary<string, MethodInfo>> registeredHandlers;
         private readonly Queue<IDomainEvent> uncommittedEvents = new Queue<IDomainEvent>();
-        private Guid id;
+        private TKey id;
         private long persistedVersion = 0;
         private object sync = new object();
 
-        #endregion Private Fields
+        #endregion 
 
-        #region Protected Constructors
+        #region 构造函数
 
-        protected AggregateRootWithEventSourcing()
-            : this(Guid.NewGuid())
-        {
-        }
 
-        protected AggregateRootWithEventSourcing(Guid id)
+        protected AggregateRootWithEventSourcing(TKey id)
         {
             registeredHandlers = new Lazy<Dictionary<string, MethodInfo>>(() =>
             {
@@ -53,11 +50,11 @@ namespace Mall.Core.Domain
             Raise(new AggregateCreatedEvent(id));
         }
 
-        #endregion Protected Constructors
+        #endregion 
 
-        #region Public Properties
+        #region 公开属性
 
-        public Guid Id => id;
+        public TKey Id => id;
 
         long IPersistedVersionSetter.PersistedVersion { set => Interlocked.Exchange(ref this.persistedVersion, value); }
 
@@ -65,29 +62,13 @@ namespace Mall.Core.Domain
 
         public long Version => this.uncommittedEvents.Count + this.persistedVersion;
 
-        #endregion Public Properties
+        #endregion 
 
-        #region Public Methods
+        #region 公开方法
 
-        /// <summary>
-        /// Implements the operator !=.
-        /// </summary>
-        /// <param name="a">a.</param>
-        /// <param name="b">The b.</param>
-        /// <returns>
-        /// The result of the operator.
-        /// </returns>
-        public static bool operator !=(AggregateRootWithEventSourcing a, AggregateRootWithEventSourcing b) => !(a == b);
-
-        /// <summary>
-        /// Implements the operator ==.
-        /// </summary>
-        /// <param name="a">a.</param>
-        /// <param name="b">The b.</param>
-        /// <returns>
-        /// The result of the operator.
-        /// </returns>
-        public static bool operator ==(AggregateRootWithEventSourcing a, AggregateRootWithEventSourcing b)
+        public static bool operator != (AggregateRootWithEventSourcing<TKey> a, AggregateRootWithEventSourcing<TKey> b) => !(a == b);
+      
+        public static bool operator ==(AggregateRootWithEventSourcing<TKey> a, AggregateRootWithEventSourcing<TKey> b)
         {
             if ((object)a == null)
             {
@@ -97,35 +78,19 @@ namespace Mall.Core.Domain
             return a.Equals(b);
         }
 
-        /// <summary>
-        /// Determines whether the specified <see cref="System.Object" />, is equal to this instance.
-        /// </summary>
-        /// <param name="obj">The <see cref="System.Object" /> to compare with this instance.</param>
-        /// <returns>
-        ///   <c>true</c> if the specified <see cref="System.Object" /> is equal to this instance; otherwise, <c>false</c>.
-        /// </returns>
+     
         public override bool Equals(object obj)
         {
             if (ReferenceEquals(this, obj))
-            {
                 return true;
-            }
 
-            var other = obj as AggregateRootWithEventSourcing;
+            var other = obj as AggregateRootWithEventSourcing<TKey>;
             if (other == null)
-            {
                 return false;
-            }
 
             return this.id.Equals(other.id);
         }
-
-        /// <summary>
-        /// Returns a hash code for this instance.
-        /// </summary>
-        /// <returns>
-        /// A hash code for this instance, suitable for use in hashing algorithms and data structures like a hash table.
-        /// </returns>
+     
         public override int GetHashCode() => this.id.GetHashCode();
 
         void IPurgable.Purge()
@@ -139,8 +104,7 @@ namespace Mall.Core.Domain
         public void Replay(IEnumerable<IDomainEvent> events)
         {
             ((IPurgable)this).Purge();
-            events.OrderBy(e => e.Timestamp)
-                .ToList()
+            events.OrderBy(e => e.Timestamp).ToList()
                 .ForEach(e =>
                 {
                     HandleEvent(e);
@@ -148,14 +112,14 @@ namespace Mall.Core.Domain
                 });
         }
 
-        #endregion Public Methods
+        #endregion
 
-        #region Protected Methods
+        #region 受保护方法
 
         [HandlesInline]
         protected void OnAggregateCreated(AggregateCreatedEvent @event)
         {
-            this.id = @event.NewId;
+            this.id = (TKey)@event.NewId;
         }
 
         protected void Raise<TDomainEvent>(TDomainEvent domainEvent)
