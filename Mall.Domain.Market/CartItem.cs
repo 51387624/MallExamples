@@ -34,5 +34,12 @@ namespace Mall.Domain.Market
         {
             this.Quantity = quantity;
         }
+
+        public void ModifyPrice(decimal price)
+        {
+            if (this.Price == price)
+                return;//价格未变更,忽略
+            this.Price = price;
+        }
     }
 }

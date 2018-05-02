@@ -34,16 +34,19 @@ namespace Mall.Domain.Market
             this._cartItems = new List<CartItem>();
         }
 
-        public void AddCartItem(CartItem cartItem)
+
+        public void AddCartItem(Guid productId, int quantity, decimal price)
         {
-            var existedCartItem = this._cartItems.FirstOrDefault(ent => ent.ProductId == cartItem.ProductId);
-            if (existedCartItem == null)
+            var item = this._cartItems.FirstOrDefault(p => p.ProductId == productId);
+            if (item == null)
             {
-                this._cartItems.Add(cartItem);
+                item = new CartItem(productId, quantity, price);
+                this._cartItems.Add(item);
             }
             else
             {
-                existedCartItem.ModifyQuantity(existedCartItem.Quantity + cartItem.Quantity);
+                item.ModifyPrice(price);
+                item.ModifyQuantity(item.Quantity + quantity);
             }
         }
     }

@@ -5,12 +5,17 @@ using System.Text;
 
 namespace Mall.Domain.Product
 {
-    public class Product : AggregateRootWithEventSourcing<long>
+    public class Product : AggregateRootWithEventSourcing<Guid>
     {
-        protected Product(long id) : 
+        public Product(Guid id) : 
             base(id)
         {
 
         }
+
+        /// <summary>
+        /// 商品价格
+        /// </summary>
+        public decimal Price { get; set; }
     }
 }

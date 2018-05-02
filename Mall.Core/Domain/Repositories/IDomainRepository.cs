@@ -12,7 +12,7 @@ namespace Mall.Core.Domain.Repositories
     {
         Task SaveAsync<TKey, IAggregateRootWithEventSourcing>(IAggregateRootWithEventSourcing aggregateRoot, bool purge = true)
             where TKey : IEquatable<TKey>
-            where IAggregateRootWithEventSourcing : class, IAggregateRootWithEventSourcing<TKey>, new();
+            where IAggregateRootWithEventSourcing : class, IAggregateRootWithEventSourcing<TKey>;
 
         Task<IAggregateRoot> GetByKeyAsync<TKey, IAggregateRoot>(TKey key)
             where TKey : IEquatable<TKey>

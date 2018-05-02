@@ -23,11 +23,15 @@ Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "3.UI", "3.UI", "{A5FE0F0A-F
 EndProject
 Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "2.Application", "2.Application", "{D228B14F-B8D9-44D5-8359-0522676CDC99}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Mall.Domain.Market", "Mall.Domain.Market\Mall.Domain.Market.csproj", "{9AD5E0FF-AB5C-4215-86EF-2196378CEBCB}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Mall.Domain.Market", "Mall.Domain.Market\Mall.Domain.Market.csproj", "{9AD5E0FF-AB5C-4215-86EF-2196378CEBCB}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Mall.Infrastructure.Translators", "Mall.Infrastructure.Translators\Mall.Infrastructure.Translators.csproj", "{D693F686-9CDB-4F38-A7F6-2FFB58D51CF4}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Mall.Infrastructure.Translators", "Mall.Infrastructure.Translators\Mall.Infrastructure.Translators.csproj", "{D693F686-9CDB-4F38-A7F6-2FFB58D51CF4}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Mall.Infrastructure.Repertories", "Mall.Infrastructure.Repertories\Mall.Infrastructure.Repertories.csproj", "{8B082623-CE7B-4E24-9DBE-42A588ECC5DB}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Mall.Infrastructure.Repertories", "Mall.Infrastructure.Repertories\Mall.Infrastructure.Repertories.csproj", "{8B082623-CE7B-4E24-9DBE-42A588ECC5DB}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Mall.Application", "Mall.Application\Mall.Application.csproj", "{85520D04-9422-440F-AB60-69B6AFC66C6D}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Mall.DomainService", "Mall.DomainService\Mall.DomainService.csproj", "{04AACD96-EBC0-4FF4-B430-7BCC8D446444}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -71,6 +75,14 @@ Global
 		{8B082623-CE7B-4E24-9DBE-42A588ECC5DB}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{8B082623-CE7B-4E24-9DBE-42A588ECC5DB}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{8B082623-CE7B-4E24-9DBE-42A588ECC5DB}.Release|Any CPU.Build.0 = Release|Any CPU
+		{85520D04-9422-440F-AB60-69B6AFC66C6D}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{85520D04-9422-440F-AB60-69B6AFC66C6D}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{85520D04-9422-440F-AB60-69B6AFC66C6D}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{85520D04-9422-440F-AB60-69B6AFC66C6D}.Release|Any CPU.Build.0 = Release|Any CPU
+		{04AACD96-EBC0-4FF4-B430-7BCC8D446444}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{04AACD96-EBC0-4FF4-B430-7BCC8D446444}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{04AACD96-EBC0-4FF4-B430-7BCC8D446444}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{04AACD96-EBC0-4FF4-B430-7BCC8D446444}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
@@ -85,6 +97,8 @@ Global
 		{9AD5E0FF-AB5C-4215-86EF-2196378CEBCB} = {828F1F08-A370-4943-A5A2-EC2BC203036F}
 		{D693F686-9CDB-4F38-A7F6-2FFB58D51CF4} = {064691BC-FBBF-4663-9D9E-DF085544ACBD}
 		{8B082623-CE7B-4E24-9DBE-42A588ECC5DB} = {064691BC-FBBF-4663-9D9E-DF085544ACBD}
+		{85520D04-9422-440F-AB60-69B6AFC66C6D} = {D228B14F-B8D9-44D5-8359-0522676CDC99}
+		{04AACD96-EBC0-4FF4-B430-7BCC8D446444} = {828F1F08-A370-4943-A5A2-EC2BC203036F}
 	EndGlobalSection
 	GlobalSection(ExtensibilityGlobals) = postSolution
 		SolutionGuid = {56A9E519-96D0-4501-BFA5-124D2CE75D4B}

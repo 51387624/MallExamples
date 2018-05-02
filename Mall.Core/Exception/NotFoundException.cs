@@ -4,10 +4,10 @@ using System.Text;
 
 namespace Mall.Core.Exception
 {
-    public class MallException:System.Exception
+    public class NotFoundException:MallException
     {
-        public MallException(string message)
-           : base(message)
+        public NotFoundException(string message) 
+            : base(message)
         {
 
         }
